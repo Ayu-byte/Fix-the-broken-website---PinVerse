@@ -25,6 +25,9 @@ Your site is broken. Your job: hunt it down, fix it, ship it.
 A Pinterest-style gallery in pure **HTML + CSS + JS** (no frameworks).
 
 Run it:
+
+Double-click index.html OR
+
 ```bash
 python -m http.server 8080
 # open http://localhost:8080/index.html
