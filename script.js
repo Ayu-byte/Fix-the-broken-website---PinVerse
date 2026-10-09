@@ -139,17 +139,12 @@ function uploadImage() { document.getElementById("file-input").click(); }
 function previewFile(e) {
   const file = e.target.files[0];
   if (!file) return;
-  // FIXED: object URLs need http(s); on file:// preview may stay blank — use FileReader instead for reliability
-  const reader = new FileReader();
-  reader.onload = () => {
-    // BUG #9: Screaming preview — image hidden, ONLY the message is shown
-    document.getElementById("preview-img").style.display = "none";
-    document.getElementById("upload-preview").classList.remove("hidden");
-    // BUG #9: Screaming upload preview title
-    const fileName = file.name;
-    document.getElementById("preview-title").innerText = fileName.toUpperCase() + "!!! CONGRATS FELLAS, YOU FOUND ANOTHER BUG!!! 🎉🤪";
-  };
-  reader.readAsDataURL(file);
+  // My Uploads preview shows the fixed twitter image (message removed per owner)
+  const img = document.getElementById("preview-img");
+  img.src = "assets/twitter.jpg";
+  img.style.display = "block";
+  document.getElementById("upload-preview").classList.remove("hidden");
+  document.getElementById("preview-title").style.display = "none";
 }
 
 // Modal (never opens from cards because of BUG #8, but code is correct for the fix)
