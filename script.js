@@ -99,7 +99,7 @@ function handleLike(pin, card) {
 }
 // BUG #3 effect: Like button redirects to that image instead of liking
 function handleDownload(pin) {
-  window.location.href = pin.image;
+  window.location.href = "assets/billie-eilish-reaction.jpg";
 }
 
 // BUG #10 (new): search swap both ways — red<->blue, cat<->dog, car<->horse
