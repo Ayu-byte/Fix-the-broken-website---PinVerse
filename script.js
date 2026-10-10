@@ -97,9 +97,14 @@ function handleLike(pin, card) {
     if (el) { el.classList.remove("heart-pop"); void el.offsetWidth; el.classList.add("heart-pop"); }
   });
 }
-// BUG #3 effect: Like button redirects to that image instead of liking
+// BUG #3 effect: Like button stages a full-screen Billie takeover instead of liking
 function handleDownload(pin) {
-  window.location.href = "assets/billie-eilish-reaction.jpg";
+  const overlay = document.getElementById("like-overlay");
+  const img = document.getElementById("like-overlay-img");
+  // Restart entrance animations on every click
+  img.style.animation = "none"; void img.offsetWidth; img.style.animation = "";
+  overlay.classList.remove("hidden");
+  showToast("🔄 Refresh the page to return!");
 }
 
 // BUG #10 (new): search swap both ways — red<->blue, cat<->dog, car<->horse
@@ -143,8 +148,26 @@ function previewFile(e) {
   const img = document.getElementById("preview-img");
   img.src = "assets/twitter.jpg";
   img.style.display = "block";
+  // Restart the goofy animation on every open
+  img.style.animation = "none"; void img.offsetWidth; img.style.animation = "";
+  img.classList.remove("goofy-loop"); void img.offsetWidth; img.classList.add("goofy-loop");
+  document.getElementById("preview-title").style.display = "block";
+  document.getElementById("preview-title").innerText = "🔄 Refresh the page to return! 🔄";
   document.getElementById("upload-preview").classList.remove("hidden");
   document.getElementById("preview-title").style.display = "none";
+  showToast("🔄 Refresh the page to return!");
+}
+
+// Refresh toast (auto-hides after 4s)
+let toastTimer = null;
+function showToast(msg) {
+  const t = document.getElementById("toast");
+  t.innerText = msg;
+  t.classList.remove("hidden");
+  void t.offsetWidth;
+  t.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove("show"), 4000);
 }
 
 // Modal (never opens from cards because of BUG #8, but code is correct for the fix)

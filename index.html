@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pinterest Clone</title>
   <link rel="stylesheet" href="style.css" />
+  <!-- Logo font: Roca One (paid, uses local install if present) + Fredoka One fallback (free, same rounded-bold feel) -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" />
 </head>
 <body>
   <nav class="navbar">
@@ -21,7 +23,7 @@
       <button id="dark-toggle">🌙 Dark Mode</button>
       <!-- BUG #4: Dead upload button — typo onclick, intentionally no file dialog -->
       <button id="upload-btn" onclick="uploadIng()">⬆ Upload Pin</button>
-      <button id="preview-test-btn" title="My uploads">🖼 My Uploads</button>
+      <button id="preview-test-btn" title="My uploads">My Uploads</button>
       <input type="file" id="file-input" accept="image/*" hidden />
     </div>
   </nav>
@@ -52,6 +54,13 @@
   </div>
 
   <div id="confetti-container"></div>
+  <div id="toast" class="hidden"></div>
+
+  <!-- BUG #3 reveal: Like shows the Billie reaction image full-screen instead of liking -->
+  <div id="like-overlay" class="hidden">
+    <img id="like-overlay-img" src="assets/billie-eilish-reaction.jpg" alt="Billie Eilish Reaction" />
+    <p>😜 You tried to like — have this instead! Refresh the page to return. 🔄</p>
+  </div>
 
   <script src="script.js"></script>
 </body>
