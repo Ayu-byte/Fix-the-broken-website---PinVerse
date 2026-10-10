@@ -1,8 +1,22 @@
 :root {
-  --background-color: #ffffff;
-  --text-color: #111111;
-  --card-bg: #f0f0f0;
+  --background-color: #fff7f0;
+  --text-color: #231f20;
+  --card-bg: #ffffff;
   --nav-bg: #ffffff;
+  --pop-red: #e60023;
+  --pop-yellow: #ffcb05;
+  --pop-teal: #00b2a9;
+  --pop-purple: #7b5cff;
+  --pop-shadow: 4px 4px 0 #231f20;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--background-color);
+  background-image: radial-gradient(#ffd9e3 1.5px, transparent 1.5px);
+  background-size: 22px 22px;
+  color: var(--text-color);
+  font-family: "Segoe UI", Verdana, Geneva, Tahoma, sans-serif;
 }
 
 /* BUG #1: Dark mode uses sunburst teal/cream instead of proper dark tones */
@@ -13,44 +27,80 @@
   --nav-bg: #f5e9be;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { background: var(--background-color); color: var(--text-color); font-family: Arial, sans-serif; }
-
 .navbar {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 12px 20px; background: var(--nav-bg);
-  position: sticky; top: 0; z-index: 10; border-bottom: 1px solid #ddd;
+  display: flex; align-items: center; gap: 14px;
+  padding: 14px 22px; background: var(--nav-bg);
+  position: sticky; top: 0; z-index: 10;
+  border-bottom: 3px solid #231f20;
 }
-.logo { font-size: 24px; font-weight: bold; color: #e60023; }
-.logo span { color: var(--text-color); }
-#search-form { display: flex; flex: 1; margin: 0 20px; }
-#search-input { flex: 1; padding: 10px; border-radius: 20px 0 0 20px; border: 1px solid #ccc; }
-#search-btn { padding: 10px 16px; border-radius: 0 20px 20px 0; border: 1px solid #ccc; cursor: pointer; }
-.nav-actions button { margin-left: 8px; padding: 10px 14px; border-radius: 20px; border: none; cursor: pointer; }
-#upload-btn { background: #e60023; color: #fff; }
+.logo {
+  font-size: 30px; font-weight: 900; letter-spacing: -1px;
+  color: var(--pop-red); cursor: pointer;
+  background: var(--pop-yellow);
+  border: 3px solid #231f20; border-radius: 14px;
+  padding: 2px 14px; box-shadow: var(--pop-shadow);
+  transform: rotate(-2deg);
+}
+#search-form { display: flex; flex: 1; margin: 0 12px; }
+#search-input {
+  flex: 1; padding: 12px 18px; font-size: 16px; font-weight: 600;
+  border-radius: 999px 0 0 999px; border: 3px solid #231f20; border-right: none;
+  background: #fff; outline: none;
+}
+#search-btn {
+  padding: 12px 20px; font-size: 18px;
+  border-radius: 0 999px 999px 0; border: 3px solid #231f20;
+  background: var(--pop-teal); cursor: pointer;
+  transition: transform 0.12s ease;
+}
+#search-btn:hover { transform: scale(1.08) rotate(-3deg); }
+.nav-actions { display: flex; gap: 10px; align-items: center; }
+.nav-actions button {
+  padding: 12px 16px; font-weight: 800; font-size: 14px;
+  border-radius: 999px; border: 3px solid #231f20; cursor: pointer;
+  background: #fff; box-shadow: 3px 3px 0 #231f20;
+  transition: transform 0.12s ease;
+}
+.nav-actions button:hover { transform: translate(-1px, -1px); }
+.nav-actions button:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 #231f20; }
+#upload-btn { background: var(--pop-red); color: #fff; }
+#preview-test-btn { background: var(--pop-purple); color: #fff; }
+#dark-toggle { background: var(--pop-yellow); }
 
 /* BUG #2: Flex nowrap with fixed-width cards + wide container -> guaranteed horizontal overflow */
 .pin-container {
   display: flex;
   flex-wrap: nowrap;
-  gap: 16px;
-  padding: 20px;
+  gap: 20px;
+  padding: 26px;
   width: 1600px;
   overflow-x: visible;
 }
 .pin-card { flex: 0 0 280px; }
 
 .pin-card {
-  background: var(--card-bg); border-radius: 12px; overflow: hidden;
-  cursor: pointer; position: relative; transition: top 1s ease-in;
+  background: var(--card-bg);
+  border: 3px solid #231f20; border-radius: 20px; overflow: hidden;
+  cursor: pointer; position: relative;
+  box-shadow: 5px 5px 0 #231f20;
+  transition: transform 0.15s ease;
 }
-.pin-card img { width: 100%; display: block; }
-.pin-info { padding: 10px; }
-.pin-info h3 { font-size: 15px; margin-bottom: 4px; }
-.pin-info small { opacity: 0.7; }
-.card-actions { display: flex; gap: 8px; padding: 0 10px 10px; }
-.save-btn { background: #e60023; color: #fff; border: none; border-radius: 20px; padding: 8px 12px; cursor: pointer; }
-.like-btn, .download-btn { border: 1px solid #ccc; border-radius: 20px; padding: 8px 12px; cursor: pointer; text-decoration: none; color: inherit; background: #fff; }
+.pin-card:hover { transform: translateY(-4px) rotate(-0.5deg); }
+.pin-card img { width: 100%; display: block; border-bottom: 3px solid #231f20; }
+.pin-info { padding: 12px 14px; }
+.pin-info h3 { font-size: 16px; font-weight: 800; margin-bottom: 4px; }
+.pin-info small { opacity: 0.85; font-weight: 600; }
+.card-actions { display: flex; gap: 8px; padding: 0 12px 12px; flex-wrap: wrap; }
+.save-btn {
+  background: var(--pop-red); color: #fff; font-weight: 800;
+  border: 3px solid #231f20; border-radius: 999px; padding: 8px 14px; cursor: pointer;
+  box-shadow: 3px 3px 0 #231f20;
+}
+.like-btn, .download-btn {
+  border: 3px solid #231f20; border-radius: 999px; padding: 8px 14px;
+  cursor: pointer; text-decoration: none; color: inherit; background: #fff;
+  font-weight: 800; box-shadow: 3px 3px 0 #231f20;
+}
 
 /* Used by BUG #8 gravity drop — highly visible fall: spins, drops off screen, fades */
 @keyframes fallDrop {
@@ -61,32 +111,37 @@ body { background: var(--background-color); color: var(--text-color); font-famil
 }
 .pin-card.fall { animation: fallDrop 1.2s ease-in forwards; z-index: 50; }
 
-.modal { position: fixed; inset: 0; background: rgba(0,0,0,0.6); display: flex; align-items: center; justify-content: center; }
+.modal { position: fixed; inset: 0; background: rgba(35,31,32,0.65); display: flex; align-items: center; justify-content: center; z-index: 40; }
 .modal.hidden, .hidden { display: none; }
-.modal-content { background: var(--background-color); padding: 20px; border-radius: 12px; max-width: 500px; width: 90%; text-align: center; }
-.modal-content img { width: 100%; border-radius: 8px; }
-#modal-close { float: right; font-size: 28px; cursor: pointer; }
-.modal-actions { margin-top: 12px; display: flex; gap: 10px; justify-content: center; }
+.modal-content {
+  background: var(--background-color); padding: 24px; border-radius: 24px;
+  max-width: 540px; width: 92%; text-align: center;
+  border: 4px solid #231f20; box-shadow: 8px 8px 0 #231f20;
+}
+.modal-content img { width: 100%; border-radius: 14px; border: 3px solid #231f20; }
+.modal-content h2 { margin: 12px 0 4px; font-weight: 900; }
+#modal-close { float: right; font-size: 28px; cursor: pointer; font-weight: 900; }
+.modal-actions { margin-top: 14px; display: flex; gap: 10px; justify-content: center; }
 
 .upload-preview {
   position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
-  z-index: 60; text-align: center; padding: 20px;
-  background: var(--background-color); border-radius: 12px;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.35); max-width: 90vw;
+  z-index: 60; text-align: center; padding: 26px;
+  background: var(--background-color); border-radius: 24px;
+  border: 4px solid #231f20; box-shadow: 8px 8px 0 #231f20; max-width: 90vw;
 }
 .upload-preview img {
   display: block; margin: 0 auto 16px; max-width: 500px; width: 100%;
-  border-radius: 8px;
+  border-radius: 14px; border: 3px solid #231f20;
 }
 .upload-preview {
   min-width: 640px; max-width: 92vw;
 }
-.upload-preview p { font-size: 18px; margin-top: 8px; }
+.upload-preview p { font-size: 18px; margin-top: 8px; font-weight: 700; }
 
 #confetti-container { position: fixed; top: 0; left: 0; width: 100%; pointer-events: none; z-index: 99; }
-.confetti { position: absolute; width: 10px; height: 10px; top: 0; }
+.confetti { position: absolute; width: 12px; height: 12px; top: 0; border: 2px solid #231f20; }
 
-/* Minimal pop on just the ❤ inside the <small> likes line */
+/* Minimal pop on just the heart inside the <small> likes line */
 .pin-info .heart { display: inline-block; }
 @keyframes heartPop { 0% { transform: scale(1); } 40% { transform: scale(1.6); color: #e60023; } 100% { transform: scale(1); } }
 .pin-info .heart.heart-pop { animation: heartPop 0.35s ease; }
