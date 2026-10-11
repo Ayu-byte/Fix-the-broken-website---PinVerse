@@ -3,12 +3,53 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Did you guys just found another bug?</title>
+  <title>Bug Found! 🎉</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    .bug-hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 18px; text-align: center; padding: 40px 20px;
+      background: radial-gradient(circle at 50% 30%, #fff7ad 0%, #f4f1ea 55%, #ffd9e3 100%);
+    }
+    .bug-badge {
+      font-size: 64px;
+      animation: badgeBounce 1s cubic-bezier(0.22, 1.4, 0.36, 1) backwards;
+    }
+    @keyframes badgeBounce {
+      0% { opacity: 0; transform: scale(0) rotate(-30deg); }
+      60% { opacity: 1; transform: scale(1.25) rotate(8deg); }
+      100% { opacity: 1; transform: none; }
+    }
+    .bug-hero h1 {
+      font-size: clamp(28px, 5vw, 52px); font-weight: 900; color: #e60023;
+      text-shadow: 3px 3px 0 #fff; letter-spacing: -1px;
+      animation: riseFade 0.6s ease 0.2s backwards;
+    }
+    .bug-hero p {
+      font-size: 18px; font-weight: 600; color: #4a4340; max-width: 560px;
+      animation: riseFade 0.6s ease 0.35s backwards;
+    }
+    @keyframes riseFade {
+      from { opacity: 0; transform: translateY(14px); }
+      to { opacity: 1; transform: none; }
+    }
+    .bug-hero a {
+      margin-top: 8px; padding: 12px 26px; border-radius: 999px;
+      background: #e60023; color: #fff; font-weight: 800; text-decoration: none;
+      box-shadow: 0 6px 16px rgba(230, 0, 35, 0.4);
+      transition: transform 0.15s ease;
+      animation: riseFade 0.6s ease 0.5s backwards;
+    }
+    .bug-hero a:hover { transform: scale(1.06) rotate(-1deg); }
+  </style>
 </head>
-<body style="text-align:center; padding:60px;">
-  <h1>Did you guys just found another bug?</h1>
-  <p>You pressed Enter in the search bar and the form crashed here (Bug #6).</p>
-  <a href="index.html">← Back to Pinterest Clone</a>
+<body>
+  <div class="bug-hero">
+    <div class="bug-badge">🐞🎉🥳</div>
+    <h1>Congrats guys, you just found another bug! 🎊</h1>
+    <p>You pressed Enter in the search bar and the form crashed here. That's Bug #6 doing its thing — now hit back and keep hunting! 🔍✨</p>
+    <a href="index.html">← Back to PinVerse 📌</a>
+  </div>
 </body>
 </html>
