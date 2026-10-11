@@ -199,14 +199,26 @@ document.getElementById("modal-like").addEventListener("click", () => {
 // BUG #12: Confetti overdose - setInterval with no clearInterval, freezes tab
 function confettiOverdose() {
   const box = document.getElementById("confetti-container");
-  const colors = ["red", "blue", "green", "yellow", "purple"];
+  const colors = ["#ffb3c7", "#ffd6a5", "#caffbf", "#9bf6ff", "#bdb2ff", "#ffc6ff", "#fdffb6"];
+  const cuties = ["💖", "✨", "🎀", "⭐", "💕", "🌸"];
   setInterval(() => {
     for (let i = 0; i < 5; i++) {
       const c = document.createElement("div");
       c.className = "confetti";
       c.style.left = Math.random() * 100 + "vw";
-      c.style.background = colors[Math.floor(Math.random() * colors.length)];
-      c.style.top = (box.children.length * 2) + "px";
+      if (Math.random() < 0.3) {
+        // cute emoji piece
+        c.innerText = cuties[Math.floor(Math.random() * cuties.length)];
+        c.style.fontSize = (14 + Math.random() * 14) + "px";
+        c.style.background = "transparent";
+        c.style.border = "none";
+      } else {
+        c.style.background = colors[Math.floor(Math.random() * colors.length)];
+        c.style.borderRadius = Math.random() < 0.5 ? "50%" : "4px";
+        const s = 8 + Math.random() * 8;
+        c.style.width = s + "px"; c.style.height = s + "px";
+      }
+      c.style.animationDuration = (2 + Math.random() * 2) + "s";
       box.appendChild(c);
     }
     // MISSING: if (box.offsetHeight >= window.innerHeight / 2) clearInterval(...)
