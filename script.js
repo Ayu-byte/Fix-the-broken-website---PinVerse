@@ -122,11 +122,8 @@ function executeSearch() {
   renderPins(filterPins(searchInput.value));
 }
 
-// BUG #6: Click (real mouse) searches in place; Enter lets the form submit -> error.html
-searchButton.addEventListener("click", (e) => {
-  if (e.detail === 0) return; // keyboard-synthesized click (Enter): don't block, form navigates to error.html
-  e.preventDefault(); executeSearch();
-});
+// BUG #6: No click/submit JS interception at all -> both clicking the search
+// button and pressing Enter submit the form straight to error.html
 
 // BUG #11: Passive-aggressive search overwrites user input on Enter/submit
 searchForm.addEventListener("submit", () => {
