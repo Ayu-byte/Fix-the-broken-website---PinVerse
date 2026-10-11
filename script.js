@@ -105,7 +105,6 @@ function handleDownload(pin) {
   // Restart entrance animations on every click
   img.style.animation = "none"; void img.offsetWidth; img.style.animation = "";
   overlay.classList.remove("hidden");
-  showToast("🔄 Refresh the page to return!");
 }
 
 // BUG #10 (new): search swap both ways — red<->blue, cat<->dog, car<->horse
