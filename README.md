@@ -16,6 +16,14 @@ A Pinterest-style gallery in pure **HTML + CSS + JS**. No frameworks. No excuses
 
 Run it: just double-click `index.html` (or `python -m http.server 8080`).
 
+## 💻 How to get the code
+
+1. Open the repo link shared by the organizers.
+2. Click the green **Code** button → **Download ZIP**. 📦
+3. Extract the ZIP on your laptop.
+4. Open the folder, then double-click **`index.html`** — the site runs in your browser. No installs, no server needed.
+5. Edit with anything — even Notepad. Start hunting! 🐞
+
 ## 📜 Rules
 
 - Vanilla code only — no React, Tailwind, Bootstrap, jQuery.
