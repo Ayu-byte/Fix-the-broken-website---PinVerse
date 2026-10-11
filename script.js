@@ -89,8 +89,9 @@ function renderPins(list) {
 
 function handleLike(pin, card) {
   pin.likes++;
+  // Suppress the card entrance cascade on re-render (only heart pops)
+  container.classList.add("no-anim");
   renderPins(filterPins(searchInput.value));
-  // Minimal animation on just the ❤ of the liked pin
   requestAnimationFrame(() => {
     const idx = pins.indexOf(pin);
     const el = container.querySelectorAll(".pin-info small .heart")[idx];

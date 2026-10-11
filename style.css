@@ -228,7 +228,9 @@ body {
   to { opacity: 1; transform: none; }
 }
 
-/* Minimal pop on just the heart inside the <small> likes line */
+/* Heart inside the <small> likes line (pops on Download click) */
 .pin-info .heart { display: inline-block; }
 @keyframes heartPop { 0% { transform: scale(1); } 40% { transform: scale(1.6); color: #e60023; } 100% { transform: scale(1); } }
 .pin-info .heart.heart-pop { animation: heartPop 0.35s ease; }
+/* Kill the entrance cascade on re-renders (e.g. Download click) */
+.pin-container.no-anim .pin-card { animation: none; }
